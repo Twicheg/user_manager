@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List, Dict
+from typing import List
 
 
 class CountrySchema(BaseModel):
@@ -16,3 +16,4 @@ class UserSchemaResponse(BaseModel):
     counter: int
     name: str
     country: List[CountrySchema] = []
+
