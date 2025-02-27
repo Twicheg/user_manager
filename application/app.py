@@ -1,11 +1,14 @@
-from fastapi import FastAPI, Request, APIRouter
+
+from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from sqlalchemy import select
 
 from application.database import create_tables, get_session, SessionDep
-from application.models import Users
+from application.models import Users, Countries
+from application.routers import names_router
+from application.schemas import UserSchema, UserSchemaResponse
 
 app = FastAPI()
 
@@ -16,7 +19,7 @@ def on_startup():
 
 
 app.mount("/static", StaticFiles(directory="static"), name='static')
-router = APIRouter(prefix="/names")
+app.include_router(names_router)
 
 templates = Jinja2Templates(directory="templates")
 
@@ -28,14 +31,3 @@ async def read_item(request: Request, session: SessionDep):
     )
 
 
-@router.get("/")
-async def get_users(session: SessionDep, name: str = ''):
-    pass
-
-
-@router.post('/')
-async def create_user(session: SessionDep):
-    pass
-
-
-app.include_router(router)

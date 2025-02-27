@@ -1,5 +1,5 @@
 import os
-from typing import Generator, Annotated
+from typing import Annotated
 
 from fastapi import Depends
 from sqlalchemy import create_engine
@@ -18,7 +18,7 @@ def create_tables() -> None:
     Base.metadata.create_all(engine)
 
 
-def get_session() -> Generator:
+def get_session() -> Session:
     with Session(engine) as session:
         yield session
 
