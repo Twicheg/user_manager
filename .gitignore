@@ -22,7 +22,6 @@ __pycache__/
 *.js
 *.gz
 *.json
-*.txt
 *.exe
 *.svg
 *.env
