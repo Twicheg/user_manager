@@ -19,6 +19,7 @@ __pycache__/
 *.png
 *.gif
 *.bd
+*.db
 *.gz
 *.json
 *.exe
