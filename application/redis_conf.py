@@ -12,7 +12,8 @@ connect = None
 
 async def connect_to_redis() -> None:
     global connect
-    connect = redis.Redis(host=os.getenv("REDIS_HOST"), port=int(os.getenv("REDIS_PORT")))
+    connect = redis.Redis(host=os.getenv("REDIS_HOST"),
+                          port=int(os.getenv("REDIS_PORT")))
 
 
 async def close_redis() -> None:
@@ -21,14 +22,15 @@ async def close_redis() -> None:
         await connect.wait_closed()
 
 
-async def get_redis(name: str) -> List|None:
+async def get_redis(name: str) -> List | None:
     try:
         cache = connect.get(name)
     except Exception:
         return None
     if cache is not None:
         response = pickle.loads(cache)
-        return [{"name": response.name, "counter": response.counter, "country": [i.dict() for i in response.country]}]
+        return [{"name": response.name, "counter": response.counter,
+                 "country": [i.dict() for i in response.country]}]
 
     return None
 

@@ -14,13 +14,14 @@ class Base(DeclarativeBase):
 class Users(Base):
     __tablename__ = "users"
 
-    counter : Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    counter: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     name: Mapped[Optional[str]] = mapped_column(unique=True)
     country: Mapped[Optional[List["Countries"]]] = relationship(
         back_populates="user", cascade="all, delete-orphan")
 
     def __repr__(self) -> str:
-        return f"User(counter={self.counter}, name={self.name}, country={self.country})"
+        return (f"User(counter={self.counter}, name={self.name},"
+                f" country={self.country})")
 
 
 class Countries(Base):

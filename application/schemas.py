@@ -1,5 +1,5 @@
 from fastapi import HTTPException
-from pydantic import BaseModel, field_validator, field_serializer, model_validator
+from pydantic import BaseModel, field_validator
 from typing import List
 
 from application.models import Users
@@ -15,7 +15,8 @@ class CountrySchema(BaseModel):
     @classmethod
     def check(cls, country_id: str) -> str:
         if len(country_id) > 5:
-            raise HTTPException(status_code=422, detail="max size of country_id is 5")
+            raise HTTPException(status_code=422,
+                                detail="max size of country_id is 5")
         return country_id
 
 

@@ -11,7 +11,8 @@ from application.redis_conf import get_redis, set_redis
 tags_metadata = [
     {
         "name": "user",
-        "description": "Operations with users. The **login** logic is also here.",
+        "description":
+            "Operations with users",
     }, ]
 
 names_router = APIRouter(prefix="/names", tags=tags_metadata)
