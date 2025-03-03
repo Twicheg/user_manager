@@ -3,10 +3,10 @@ from typing import List, Annotated
 from fastapi import APIRouter, Query, HTTPException
 
 from application.database import SessionDep
-from application.models import Users, Countries
+from application.models import Users
 from application.schemas import UserSchema, UserSchemaResponse
 from application.service import get_user_from_request, add_to_database
-from application.redis_conf import get_redis, check_in_redis, set_redis
+from application.redis_conf import get_redis, set_redis
 
 tags_metadata = [
     {
@@ -25,7 +25,7 @@ async def get_users(session: SessionDep,
                     name: Annotated[str | None, Query(max_length=20)] = None,
                     ):
     if name:
-        cache = await check_in_redis(name)
+        cache = await get_redis(name)
         if cache is not None:
             return cache
         user_query = session.query(Users).filter(Users.name == name)
