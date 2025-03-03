@@ -35,6 +35,7 @@
             align-items: center;
             align-content: center;
             text-align: center;
+
         }
 
         .text {
@@ -66,9 +67,35 @@
 
         }
 
-        .card-footer {
-            height: 100%;
+        .another_li {
+            transition-duration: 2s;
+            transition: opacity 3s ease;
+            display: none;
+            padding-top: 50px;
+            transition-delay: 2s;
+            transition-property: margin-bottom;
         }
+
+
+        .DoPost {
+            margin-top: 5px;
+            background: green;
+            color: white;
+            align-items: center;
+            width: 100px;
+            height: 80px;
+            transition-duration: 1s;
+            border-radius: 50px;
+            border-color: black;
+            border-width: 5px;
+            font-size: 20px;
+        }
+
+        p {
+            background: white;
+
+        }
+
     </style>
 
     <!-- Custom styles for this template -->
@@ -85,18 +112,45 @@
                 <input type="text" style="width: 20%" id="url" value=""><br>
 
             </form>
-            <button class="btn" onclick="GetFunc()">
+            <button class="btn" id='get_button' onclick="GetFunc()">
                 Get the information
-
             </button>
-            <button class="btn" onclick="PostFunc()">
-                Post the information
+            <button class="btn" id="post_button">
+
+            Post the information
             </button>
         </div>
     </div>
-    <div class="col-12" id="result_column">
+    <div class="another_li" id="post_card">
+        <form>
+            <label>Name:</label>
+            <input id="post_form_input" style="width: 255px" type="text">
+            <ul style="padding-left: 0; display: inline;text-align: center">
+
+                <h4>Cities:</h4>
+                <ul id="form_ul">
+                    <li>
+                        <label style="width: 76px">Country_id:</label>
+                        <input type="text">
+                    </li>
+                    <li>
+                        <label style="width: 76px">Probability:</label>
+                        <input type="text">
+                    </li>
+                </ul>
+
+            </ul>
+            <a class="text-decoration-underline" type="button" style="font-size: 18px" onclick="AddCity()">Добавить</a>
+
+        </form>
+        <button type="submit" class="DoPost text-center" style="margin-left: 30px" onclick="PostFunc()">
+            Do Post
+        </button>
 
     </div>
+    <ul id="result_column" class="row " style="display: inline;text-align: center; align-items: center">
+
+    </ul>
 </div>
 </div>
 </body>

@@ -1,12 +1,11 @@
 import requests as rq
 from fastapi import HTTPException
 from pydantic import json
-
 from application.models import Users, Countries
 
 
-async def get_user_from_request(user_name, url) -> json:
-    url = "https://api.nationalize.io/?name="
+async def get_user_from_request(user_name,
+                                url = "https://api.nationalize.io/?name=") -> json:
     headers = {
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
                       " AppleWebKit/537.36 (KHTML, like Gecko) "

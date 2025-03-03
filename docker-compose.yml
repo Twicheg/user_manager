@@ -1,0 +1,17 @@
+services:
+  user_service:
+    image: user_service
+    tty: true
+
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code
+    env_file:
+      - .env
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+
