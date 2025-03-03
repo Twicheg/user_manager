@@ -74,8 +74,8 @@ REDIS_PORT=6379\
 REDIS_HOST=redis
 
 2. pip install -r requirements.txt  
-fastapi run application/app.py --port 8000
-в .env:
+fastapi run application/app.py --port 8000\
+в .env:\
 DB_NAME= your_db_name\
 REDIS=ON\
 REDIS_PORT=6379\
