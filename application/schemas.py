@@ -21,7 +21,7 @@ class CountrySchema(BaseModel):
 
 class UserSchema(BaseModel):
     name: str
-    country: List[CountrySchema] = []
+    country: List[CountrySchema]
 
     @field_validator('name', mode="before")
     @classmethod
@@ -34,4 +34,10 @@ class UserSchema(BaseModel):
 class UserSchemaResponse(BaseModel):
     counter: int
     name: str
+    country: List[CountrySchema]
+
+
+class UserForRedisSchema(BaseModel):
+    name: str
+    counter: int
     country: List[CountrySchema] = []
