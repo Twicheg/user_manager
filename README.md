@@ -69,7 +69,7 @@ FrontEnd
 запуск приложения через `docker-compose up`\
 создать файл .env с полями:\
 DB_NAME= your_db_name\
-REDIS=ON
+REDIS=ON\
 REDIS_PORT=6379\
 REDIS_HOST=redis
 
