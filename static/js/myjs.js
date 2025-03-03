@@ -6,7 +6,7 @@ const post_form_ul = document.getElementById("form_ul");
 const post_form_input = document.getElementById("post_form_input");
 
 
-placeholder.value = "http://127.0.0.1:8000/names/";
+placeholder.value = "http://0.0.0.0:8000/names/";
 placeholder.style.transition = "2s";
 placeholder.style.transform = "2s";
 
