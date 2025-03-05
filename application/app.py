@@ -15,13 +15,13 @@ app = FastAPI(docs_url="/documentation", redoc_url=None)
 @app.on_event('startup')
 async def startup_event():
     create_tables()
-    if os.getenv("redis") == "ON":
+    if os.getenv("REDIS") == "ON":
         await connect_to_redis()
 
 
 @app.on_event('shutdown')
 async def shutdown_event():
-    if os.getenv("redis") == "ON":
+    if os.getenv("REDIS") == "ON":
         await close_redis()
 
 app.include_router(names_router)
